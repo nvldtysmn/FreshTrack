@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FreshTrack — Persediaan Rumah</title>
+  <meta name="theme-color" content="#f7f9f5">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="setup" class="setup hidden"><div class="auth-card"><h1>Hubungkan Supabase</h1><p>Isi URL dan publishable / anon key di file <code>config.js</code>, lalu muat ulang halaman.</p></div></div>
+  <section id="auth" class="auth-screen hidden">
+    <div class="auth-panel"><div class="brand brand-large"><span class="brand-icon">✳</span> FreshTrack</div><p class="tagline">Rumah lebih rapi, barang tetap terpantau.</p>
+      <div class="auth-card"><div class="mini-label">HOME INVENTORY</div><h1 id="authTitle">Selamat datang kembali</h1><p id="authDesc">Masuk untuk mengelola persediaan rumah.</p>
+        <form id="authForm"><div id="nameField" class="field hidden"><label for="authName">Nama lengkap</label><input id="authName" autocomplete="name" placeholder="Nama kamu" maxlength="80"></div>
+          <div class="field"><label for="authEmail">Email</label><input id="authEmail" type="email" autocomplete="email" required placeholder="nama@email.com"></div>
+          <div class="field"><label for="authPassword">Password</label><div class="password-field"><input id="authPassword" type="password" autocomplete="current-password" minlength="8" required placeholder="Minimal 8 karakter"><button type="button" id="togglePassword" class="reveal" aria-label="Tampilkan password">Lihat</button></div></div>
+          <p id="authError" class="form-error" role="alert"></p><button id="authSubmit" class="btn primary full" type="submit">Masuk</button>
+        </form><p class="auth-switch"><span id="switchPrompt">Belum punya akun?</span> <button id="authSwitch" type="button" class="text-button">Daftar sekarang</button></p>
+      </div><div class="auth-foot">FreshTrack • Catat stok, kurangi pemborosan.</div>
+    </div>
+    <div class="auth-art"><div class="art-card"><span class="art-icon">⌂</span><h2>Segala kebutuhan rumah,<br>lebih mudah dipantau.</h2><p>Catat stok, lihat pengingat kedaluwarsa, dan siapkan daftar belanja dalam satu tempat.</p><div class="art-bubbles"><span>🥛 Susu UHT</span><span>🥚 Telur</span><span>🛒 Daftar Belanja</span></div></div></div>
+  </section>
+  <div id="app" class="app-shell hidden">
+    <aside class="sidebar"><div class="brand"><span class="brand-icon">✳</span> FreshTrack</div><div class="side-label">MENU UTAMA</div>
+      <nav id="sidebarNav" aria-label="Navigasi utama">
+        <button data-page="dashboard" class="nav-btn active">⌂ <span>Beranda</span></button>
+        <button data-page="produk" class="nav-btn">▣ <span>Produk</span></button>
+        <button data-page="pengingat" class="nav-btn">♧ <span>Pengingat</span></button>
+        <button data-page="belanja" class="nav-btn">🛒 <span>Daftar Belanja</span></button>
+        <button data-page="riwayat" class="nav-btn">◷ <span>Riwayat</span></button>
+      </nav><div class="sidebar-bottom"><button data-page="profil" class="nav-btn">⚙ <span>Profil</span></button><button id="logoutSide" class="nav-btn">↪ <span>Keluar</span></button></div>
+    </aside>
+    <div class="main-shell"><header class="topbar"><div class="header-brand brand"><span class="brand-icon">✳</span> FreshTrack</div><span id="todayLabel" class="date-label"></span><button id="userChip" data-page="profil" class="user-chip"><span class="avatar">U</span><span id="headerName">Pengguna</span></button></header>
+      <main id="main" class="content" tabindex="-1"></main>
+    </div>
+    <nav class="bottom-nav" aria-label="Navigasi ponsel"><button data-page="dashboard" class="active"><span>⌂</span>Beranda</button><button data-page="produk"><span>▣</span>Produk</button><button data-page="pengingat"><span>♧</span>Pengingat</button><button data-page="belanja"><span>🛒</span>Belanja</button><button data-page="profil"><span>⚙</span>Profil</button></nav>
+  </div>
+  <div id="modalRoot"></div><div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script><script src="app.js"></script>
+</body>
+</html>
